@@ -17,7 +17,6 @@ public class MinioConfig {
     @Value("${minio.password}")
     private String minioPassword;
 
-    @Value("${minio.bucketfolder}")
     @Bean
     public MinioClient minioClient() {
         return MinioClient
