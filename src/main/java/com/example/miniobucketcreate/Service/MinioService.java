@@ -16,7 +16,7 @@ import java.io.File;
 public class MinioService {
     private MinioConfig minioConfig;
 
-    private void createBucket( fileJson){
+    private void createBucket(File fileJson){
         MinioClient.builder().endpoint(minioConfig.minioUrl);
     }
 
