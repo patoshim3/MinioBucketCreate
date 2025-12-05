@@ -1,14 +1,8 @@
 package com.example.miniobucketcreate.Service;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.example.miniobucketcreate.Model.Image;
 
-@Service
-@AllArgsConstructor
-@NoArgsConstructor
-public class ImageService {
-
-
-
+public interface ImageService {
+    Image getImage();
+    Image createImage();
 }
