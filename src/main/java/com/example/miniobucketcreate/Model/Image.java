@@ -3,6 +3,8 @@ package com.example.miniobucketcreate.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -15,5 +17,14 @@ public class Image {
     private Long id;
 
     private String name;
-    private String type;
+
+    private Long size;
+
+    @Column(name = "upload_time")
+    private LocalDateTime uploadTime;
+
+    private String originalFileName;
+
+    private String contentType;
+
 }

@@ -1,0 +1,27 @@
+services:
+  minio-file-service:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9080:9080"
+    environment:
+      MINIO_ROOT_USER: patima
+      MINIO_ROOT_PASSWORD: patima2612
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ":9080"
+
+  minio-setup:
+    image: minio/mc
+    depends_on:
+      - minio-file-service
+    entrypoint: |
+      /bin/sh -c '
+        set -e
+        until mc alias set minio http://minio-file-service:9000 >/dev/null 2>&1; do
+          sleep 2
+        done
+        mc mb -p minio/first-bucket || true
+      '
+volumes:
+  minio-data:
